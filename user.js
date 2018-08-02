@@ -3,8 +3,8 @@ const express = require('express');
 const axios = require('axios');
 
 const config = {
-  channelAccessToken: "Vs85b44E4j/zu4KicXYomngSUhKt29CRz9fYnu4y8IT4hrjDWziYwAoX1B2Z3SfqTcM+06GmhxHfTfknbwugHe2zd4P0kBbyGylw+sUNK1dIdoQNFLbYX7VXd3CjuTea6zOLLTvdHHCRzKzjUJEWIAdB04t89/1O/w1cDnyilFU=",
-  channelSecret: "47ac6965d87e81becd989cde51bb5b35",
+  channelAccessToken: "h8E6vA/OvSnqaXcGWOSZIO2/iczjRmtwi8dpTP271gByP6KiP5mZj5q61Hxv/3YGy8ylsv/Gz2ztcxxnmM/5tALgFTXzGOZQ11EeMgJ5Ekmf7bNLIHz/ah202d7nKLbi4N8NGitCkFFFP0TndjY7DgdB04t89/1O/w1cDnyilFU=",
+  channelSecret: "66ea46a74c8592d2d6aeba1ec445838e",
 };
 
 // create LINE SDK client
@@ -32,6 +32,65 @@ function handleEvent(event) {
       return client.replyMessage(event.replyToken, echo);
     }
     if(event.message.text === "/book"){
+      const echo =  {
+        "type": "flex",
+      "altText": "Silahkan pilih menu.",
+      "contents": {
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://pbs.twimg.com/profile_images/678448099933597698/eACo_0u3_400x400.jpg",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "TRAVEL",
+          "text": "/travel"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "RENT-CAR",
+          "text": "/rent"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "DROP",
+          "text": "/drop"
+        }
+      },
+      {
+        "type": "spacer",
+        "size": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}
+      }
+      return client.replyMessage(event.replyToken, echo);
+}
+  if(event.message.text === "/travel"){
       const echo =  {  
       "type": "flex",
       "altText": "Silahkan pilih menu.",
@@ -171,65 +230,6 @@ function handleEvent(event) {
   ]
 }
     }
-      return client.replyMessage(event.replyToken, echo);
-    }
-	if(event.message.text === "/event"){
-      const echo =  {
-  "type": "bubble",
-  "hero": {
-    "type": "image",
-    "url": "https://pbs.twimg.com/profile_images/678448099933597698/eACo_0u3_400x400.jpg",
-    "size": "full",
-    "aspectRatio": "20:13",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "uri": "http://linecorp.com/"
-    }
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "spacing": "sm",
-    "contents": [
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "uri",
-          "label": "TRAVEL",
-          "uri": "https://linecorp.com"
-        }
-      },
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "uri",
-          "label": "RENT-CAR",
-          "uri": "https://linecorp.com"
-        }
-      },
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "uri",
-          "label": "DROP",
-          "uri": "https://linecorp.com"
-        }
-      },
-      {
-        "type": "spacer",
-        "size": "sm"
-      }
-    ],
-    "flex": 0
-  }
-}
       return client.replyMessage(event.replyToken, echo);
     }
     const echo = { type: 'text', text: "Keyword Salah. Silahkan ketikkan /menu" };
