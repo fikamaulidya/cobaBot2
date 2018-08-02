@@ -173,6 +173,65 @@ function handleEvent(event) {
     }
       return client.replyMessage(event.replyToken, echo);
     }
+	if(event.message.text === "/event"){
+      const echo =  {
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://pbs.twimg.com/profile_images/678448099933597698/eACo_0u3_400x400.jpg",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "http://linecorp.com/"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "TRAVEL",
+          "uri": "https://linecorp.com"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "RENT-CAR",
+          "uri": "https://linecorp.com"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "DROP",
+          "uri": "https://linecorp.com"
+        }
+      },
+      {
+        "type": "spacer",
+        "size": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}
+      return client.replyMessage(event.replyToken, echo);
+    }
     const echo = { type: 'text', text: "Keyword Salah. Silahkan ketikkan /menu" };
     return client.replyMessage(event.replyToken, echo);
 }
